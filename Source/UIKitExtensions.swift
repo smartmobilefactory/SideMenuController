@@ -23,6 +23,8 @@
 
 import Foundation
 
+let DefaultStatusBarHeight : CGFloat = 20
+
 extension UIView {
     class func panelAnimation(duration : NSTimeInterval, animations : (()->()), completion : (()->())? = nil) {
         UIView.animateWithDuration(duration, delay: 0, options: .CurveEaseOut, animations: animations) { _ in
@@ -71,7 +73,7 @@ extension UIWindow {
             }
         case .SlideAnimation:
             animations = {
-                self.transform = hidden ? CGAffineTransformMakeTranslation(0, -20) : CGAffineTransformIdentity
+                self.transform = hidden ? CGAffineTransformMakeTranslation(0, -1 * DefaultStatusBarHeight) : CGAffineTransformIdentity
             }
         default:
             return
