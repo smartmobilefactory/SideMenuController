@@ -182,6 +182,11 @@ public class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SideMenuController.repositionViews), name: UIApplicationWillChangeStatusBarFrameNotification, object: UIApplication.sharedApplication())
 	}
 
+    override public func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.repositionViews(animated: false)
+    }
+
     override public func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         NSNotificationCenter.defaultCenter().removeObserver(self)
@@ -199,13 +204,13 @@ public class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
 
     // MARK: - Configurations -
 
-    public func repositionViews() {
+    public func repositionViews(animated shouldAnimated: Bool = true) {
 
         if sidePanelVisible {
             toggle()
         }
 
-        UIView.animateWithDuration(0.35, animations: {
+        let targetLayout = {
             self.centerPanel.frame = self.view.bounds
             self.centerPanel.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
             self.centerPanel.autoresizesSubviews = true
@@ -220,10 +225,16 @@ public class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
             if let overlay = self.centerPanelOverlay {
                 overlay.frame = self.centerPanel.frame
             }
-
+            
             self.view.layoutIfNeeded()
-        }) { (finished: Bool) in
-            self.previousStatusBarHeight = self.statusBarHeight
+        }
+
+        if (shouldAnimated == true) {
+            UIView.animateWithDuration(0.35, animations: {
+                targetLayout()
+            })
+        } else {
+            targetLayout()
         }
     }
 
@@ -409,7 +420,6 @@ public class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
         return sideViewController != nil
     }
     
-    private var previousStatusBarHeight: CGFloat = DefaultStatusBarHeight
     private var statusBarHeight: CGFloat {
         return UIApplication.sharedApplication().statusBarFrame.size.height
     }
