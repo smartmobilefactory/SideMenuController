@@ -134,9 +134,9 @@ public class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
     // MARK: Internal
     
     lazy var controllersCache = [String : UIViewController]()
-    lazy var _preferences: Preferences = {
+    var _preferences: Preferences {
         return self.dynamicType.preferences
-    }()
+    }
     
     private(set) public var centerViewController: UIViewController!
     private(set) public var sideViewController: UIViewController!
