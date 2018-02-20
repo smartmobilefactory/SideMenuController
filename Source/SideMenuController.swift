@@ -220,7 +220,7 @@ open class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         UIView.animate(withDuration: 0.35) {
-            self.centerPanel.frame = self.centerPanelFrame
+            self.centerPanel.frame = UIScreen.main.bounds
             // reposition side panel
             self.sidePanel.frame = self.sidePanelFrame
             
