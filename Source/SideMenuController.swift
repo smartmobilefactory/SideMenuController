@@ -260,7 +260,6 @@ open class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         configureGestureRecognizers()
-        view.bringSubview(toFront: statusBarUnderlay)
     }
     
     func configureGestureRecognizers() {
