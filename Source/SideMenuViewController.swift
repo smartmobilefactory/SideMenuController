@@ -24,13 +24,13 @@
 import UIKit
 
 public protocol SideMenuControllerDelegate: class {
-    func sideMenuControllerDidHide(_ sideMenuController: SideMenuController)
-    func sideMenuControllerDidReveal(_ sideMenuController: SideMenuController)
+    func sideMenuControllerDidHide(_ sideMenuController: SideMenuViewController)
+    func sideMenuControllerDidReveal(_ sideMenuController: SideMenuViewController)
 }
 
 // MARK: - Public methods -
 
-public extension SideMenuController {
+public extension SideMenuViewController {
     
     /**
      Toggles the side pannel visible or not.
@@ -134,7 +134,7 @@ public extension SideMenuController {
     }
 }
 
-open class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
+open class SideMenuViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: - Instance variables -
     
@@ -193,7 +193,7 @@ open class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
     
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(SideMenuController.repositionViews), name: UIApplication.willChangeStatusBarFrameNotification, object: UIApplication.shared)
+        NotificationCenter.default.addObserver(self, selector: #selector(SideMenuViewController.repositionViews), name: UIApplication.willChangeStatusBarFrameNotification, object: UIApplication.shared)
     }
     
     override open func viewWillDisappear(_ animated: Bool) {

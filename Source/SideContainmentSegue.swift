@@ -24,7 +24,7 @@
 open class SideContainmentSegue: UIStoryboardSegue{
     
     override open func perform() {
-        if let sideController = self.source as? SideMenuController {
+        if let sideController = self.source as? SideMenuViewController {
             sideController.embed(sideViewController: destination)
         } else {
             fatalError("This type of segue must only be used from a SideMenuController")

@@ -12,7 +12,7 @@
 		134E94E51D159C56001C1F7D /* CenterContainmentSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134E94E31D159C56001C1F7D /* CenterContainmentSegue.swift */; };
 		13A757F11D12A2A0004488DA /* SideMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13A757E61D12A2A0004488DA /* SideMenuController.framework */; };
 		13A758041D12A2F5004488DA /* SideMenuController.h in Headers */ = {isa = PBXBuildFile; fileRef = 13A758011D12A2F5004488DA /* SideMenuController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		13A758051D12A2F5004488DA /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A758021D12A2F5004488DA /* SideMenuController.swift */; };
+		13A758051D12A2F5004488DA /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A758021D12A2F5004488DA /* SideMenuViewController.swift */; };
 		13A7580A1D12A32A004488DA /* SideMenuControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A758071D12A303004488DA /* SideMenuControllerTests.swift */; };
 		13A7586D1D12A61B004488DA /* SideContainmentSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A7586C1D12A61B004488DA /* SideContainmentSegue.swift */; };
 		13F653271D3E007300700656 /* SideMenuController+CustomTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F653241D3E007300700656 /* SideMenuController+CustomTypes.swift */; };
@@ -38,7 +38,7 @@
 		13A757F01D12A2A0004488DA /* SideMenuControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SideMenuControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		13A758001D12A2F5004488DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Source/Info.plist; sourceTree = SOURCE_ROOT; };
 		13A758011D12A2F5004488DA /* SideMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SideMenuController.h; path = Source/SideMenuController.h; sourceTree = SOURCE_ROOT; };
-		13A758021D12A2F5004488DA /* SideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SideMenuController.swift; path = Source/SideMenuController.swift; sourceTree = SOURCE_ROOT; };
+		13A758021D12A2F5004488DA /* SideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SideMenuViewController.swift; path = Source/SideMenuViewController.swift; sourceTree = SOURCE_ROOT; };
 		13A758061D12A303004488DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Tests/Info.plist; sourceTree = SOURCE_ROOT; };
 		13A758071D12A303004488DA /* SideMenuControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SideMenuControllerTests.swift; path = Tests/SideMenuControllerTests.swift; sourceTree = SOURCE_ROOT; };
 		13A7586C1D12A61B004488DA /* SideContainmentSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SideContainmentSegue.swift; path = Source/SideContainmentSegue.swift; sourceTree = SOURCE_ROOT; };
@@ -129,7 +129,7 @@
 				13F653241D3E007300700656 /* SideMenuController+CustomTypes.swift */,
 				13F653251D3E007300700656 /* SideMenuController+SideOver.swift */,
 				13F653261D3E007300700656 /* SideMenuController+SideUnder.swift */,
-				13A758021D12A2F5004488DA /* SideMenuController.swift */,
+				13A758021D12A2F5004488DA /* SideMenuViewController.swift */,
 			);
 			name = SideMenuController;
 			sourceTree = "<group>";
@@ -244,7 +244,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13A758051D12A2F5004488DA /* SideMenuController.swift in Sources */,
+				13A758051D12A2F5004488DA /* SideMenuViewController.swift in Sources */,
 				134E94E11D159C4B001C1F7D /* TransitionAnimator.swift in Sources */,
 				13A7586D1D12A61B004488DA /* SideContainmentSegue.swift in Sources */,
 				134E94E21D159C4B001C1F7D /* UIKitExtensions.swift in Sources */,

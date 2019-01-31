@@ -24,7 +24,7 @@
 open class CenterContainmentSegue: UIStoryboardSegue{
     
     override open func perform() {
-        if let sideController = self.source as? SideMenuController {
+        if let sideController = self.source as? SideMenuViewController {
             guard let destinationController = destination as? UINavigationController else {
                 fatalError("Destination controller needs to be an instance of UINavigationController")
             }

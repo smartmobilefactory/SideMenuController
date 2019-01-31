@@ -35,7 +35,7 @@ extension UIView {
 
 public extension UINavigationController {
     public func addSideMenuButton(completion: ((UIButton) -> ())? = nil) {
-        guard let image = SideMenuController.preferences.drawing.menuButtonImage else {
+        guard let image = SideMenuViewController.preferences.drawing.menuButtonImage else {
             return
         }
         
@@ -44,11 +44,11 @@ public extension UINavigationController {
         }
         
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        button.accessibilityIdentifier = SideMenuController.preferences.interaction.menuButtonAccessibilityIdentifier
+        button.accessibilityIdentifier = SideMenuViewController.preferences.interaction.menuButtonAccessibilityIdentifier
         button.setImage(image, for: .normal)
-        button.addTarget(sideMenuController, action: #selector(SideMenuController.toggle), for: UIControl.Event.touchUpInside)
+        button.addTarget(sideMenuController, action: #selector(SideMenuViewController.toggle), for: UIControl.Event.touchUpInside)
         
-        if SideMenuController.preferences.drawing.sidePanelPosition.isPositionedLeft {
+        if SideMenuViewController.preferences.drawing.sidePanelPosition.isPositionedLeft {
             let newItems = computeNewItems(sideMenuController: sideMenuController, button: button, controller: self.topViewController, positionLeft: true)
             self.topViewController?.navigationItem.leftBarButtonItems = newItems
         } else {
@@ -59,7 +59,7 @@ public extension UINavigationController {
         completion?(button)
     }
     
-    private func computeNewItems(sideMenuController: SideMenuController, button: UIButton, controller: UIViewController?, positionLeft: Bool) -> [UIBarButtonItem] {
+    private func computeNewItems(sideMenuController: SideMenuViewController, button: UIButton, controller: UIViewController?, positionLeft: Bool) -> [UIBarButtonItem] {
         
         var items: [UIBarButtonItem] = (positionLeft ? self.topViewController?.navigationItem.leftBarButtonItems :
             self.topViewController?.navigationItem.rightBarButtonItems) ?? []
@@ -83,7 +83,7 @@ public extension UINavigationController {
 }
 
 extension UIWindow {
-    func set(_ hidden: Bool, withBehaviour behaviour: SideMenuController.StatusBarBehaviour) {
+    func set(_ hidden: Bool, withBehaviour behaviour: SideMenuViewController.StatusBarBehaviour) {
         let animations: () -> ()
         
         switch behaviour {
@@ -109,13 +109,13 @@ extension UIWindow {
 
 public extension UIViewController {
     
-    public var sideMenuController: SideMenuController? {
+    public var sideMenuController: SideMenuViewController? {
         return sideMenuControllerForViewController(self)
     }
     
-    fileprivate func sideMenuControllerForViewController(_ controller : UIViewController) -> SideMenuController?
+    fileprivate func sideMenuControllerForViewController(_ controller : UIViewController) -> SideMenuViewController?
     {
-        if let sideController = controller as? SideMenuController {
+        if let sideController = controller as? SideMenuViewController {
             return sideController
         }
         
