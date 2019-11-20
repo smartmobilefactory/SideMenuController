@@ -7,7 +7,8 @@
 //
 
 // MARK: - Extension for implementing the custom nested types
-public extension SideMenuController {
+extension SideMenuController {
+
     public enum SidePanelPosition {
         case underCenterPanelLeft
         case underCenterPanelRight

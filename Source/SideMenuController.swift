@@ -30,7 +30,7 @@ public protocol SideMenuControllerDelegate: class {
 
 // MARK: - Public methods -
 
-public extension SideMenuController {
+extension SideMenuController {
     
     /**
      Toggles the side pannel visible or not.
@@ -281,8 +281,12 @@ open class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
         if statusBarHeight > DefaultStatusBarHeight && hidden == true {
             return
         }
-        
-        sbw?.set(hidden, withBehaviour: _preferences.animating.statusBarBehaviour)
+
+		if #available(iOS 13.0, *) {
+			self.view.window?.set(hidden, withBehaviour: _preferences.animating.statusBarBehaviour)
+		} else {
+			sbw?.set(hidden, withBehaviour: _preferences.animating.statusBarBehaviour)
+		}
         
         if _preferences.animating.statusBarBehaviour == StatusBarBehaviour.horizontalPan {
             if !hidden {
@@ -398,8 +402,8 @@ open class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
         let s = "status"
         let b = "Bar"
         let w = "Window"
-        
-        return UIApplication.shared.value(forKey: s+b+w) as? UIWindow
+
+		return UIApplication.shared.value(forKey: s+b+w) as? UIWindow
     }
     
     fileprivate var showsStatusUnderlay: Bool {
@@ -421,7 +425,15 @@ open class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
     
     fileprivate var previousStatusBarHeight: CGFloat = DefaultStatusBarHeight
     fileprivate var statusBarHeight: CGFloat {
-        return UIApplication.shared.statusBarFrame.size.height > 0 ? UIApplication.shared.statusBarFrame.size.height : DefaultStatusBarHeight
+
+		var statusBarHeight : CGFloat
+		if #available(iOS 13.0, *) {
+			statusBarHeight = (self.view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0)
+		} else {
+			statusBarHeight = UIApplication.shared.statusBarFrame.size.height
+		}
+
+        return (statusBarHeight > 0 ? statusBarHeight : DefaultStatusBarHeight)
     }
     
     fileprivate var hidesStatusBar: Bool {
